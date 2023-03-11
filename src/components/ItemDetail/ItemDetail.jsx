@@ -21,6 +21,7 @@ const ItemDetail = ({data}) =>{
                 <img className="image" src={data.image} alt="" />
                 <div className="content">
                     <h1>{data.title}</h1>
+                    <p>{data.description}</p>
                     {
                         goCart
                         ? <Link to='/cart'>Terminar orden</Link>

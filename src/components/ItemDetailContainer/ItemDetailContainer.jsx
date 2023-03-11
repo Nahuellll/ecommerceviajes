@@ -1,26 +1,20 @@
 import React, {useState,useEffect} from "react";
+import { getFirestore,doc,getDoc}  from 'firebase/firestore'
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {useParams} from 'react-router-dom'
 
-const products = [
-    {id:1,category:'Cordoba', price: 2000,image:'https://viajerosocultos.com/wp-content/uploads/2021/01/1235222036_1390807941-750x563.jpg',title:'los gigantes'},
-    {id:2,category:'Cordoba', price: 2300,image:'https://viajerosocultos.com/wp-content/uploads/2021/01/1235222036_1390807941-750x563.jpg',title:'lacumbre'},
-    {id:3,category:'Mendoza', price: 2800,image:'https://viajerosocultos.com/wp-content/uploads/2021/01/1235222036_1390807941-750x563.jpg',title:'lala'},
-    {id:4,category:'Mendoza', price: 2700,image:'https://viajerosocultos.com/wp-content/uploads/2021/01/1235222036_1390807941-750x563.jpg',title:'lale'},
-    {id:5,category:'Cordoba', price: 2500,image:'https://viajerosocultos.com/wp-content/uploads/2021/01/1235222036_1390807941-750x563.jpg',title:'lalu'}
-]
+
 const ItemDetailContainer = () =>{
     const [data,setData] = useState({});
+    const {detailId} = useParams();
 
-    const {detailId} = useParams()
+
     useEffect(() =>{
-        const getData = new Promise (resolve =>{
-            setTimeout(() => {
-                resolve(products)
-            }, 1000);
-        });
-        getData.then(res => setData(res.find(product =>product.id===parseInt(detailId))));
-    },[])
+        const querydb = getFirestore();
+        const queryDoc = doc(querydb,'products',detailId);
+        getDoc(queryDoc)
+        .then(res => setData({id: res.id, ...res.data() }))
+    },[detailId])
 
     return(
         <ItemDetail data = {data}/>

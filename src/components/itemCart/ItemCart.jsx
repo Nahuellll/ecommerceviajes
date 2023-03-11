@@ -2,6 +2,7 @@ import React from "react";
 import '../itemCart/ItemCart.css'
 import { useCartContext } from '../../context/CartContext';
 
+
 const ItemCart = ({product}) =>{
 
     const {removeCart} = useCartContext();

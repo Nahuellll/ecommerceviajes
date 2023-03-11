@@ -26,7 +26,7 @@ const CartProvider = ({children}) => {
 
 //funcion para calcular el total price
 const totalPrice =  () => {
-    return cart.reduce((prev,act) => prev+ act.quantity * act.price, 0);
+    return cart.reduce((prev,act) => prev + act.quantity * act.price, 0);
 }
 
 //funcion para calcular total de productos
