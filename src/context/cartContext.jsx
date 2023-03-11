@@ -1,6 +1,6 @@
 import React, { useState,useContext} from "react";
-
- const CartContext = React.createContext([]);
+import { act } from "react-dom/test-utils";
+const CartContext = React.createContext([]);
 
 //hook propio para usar nuestro context
 export const useCartContext = () => useContext(CartContext)
@@ -17,14 +17,21 @@ const CartProvider = ({children}) => {
             product.quantity += quantity;
             newCart = [...cart];
         }else{
-            product = {...item,quantity:quantity};
+            product = {...item, quantity: quantity };
             newCart = [...cart,product];
         }
         setCart(newCart);
     }
 
 
-console.log ('carrito es :',cart)
+//funcion para calcular el total price
+const totalPrice =  () => {
+    return cart.reduce((prev,act) => prev+ act.quantity * act.price, 0);
+}
+
+//funcion para calcular total de productos
+const totalProducts = () => cart.reduce((acc,productAct) => acc + productAct.quantity, 0)
+
 
 //limpiamos el carrito seteandolo de nuevo a un array vacio
     const clearCart = () => setCart([]);
@@ -44,7 +51,10 @@ console.log ('carrito es :',cart)
             clearCart,
             isInCart,
             removeCart,
-            addProduct
+            addProduct,
+            totalPrice,
+            totalProducts,
+            cart
         }}>
             {children}
         </CartContext.Provider>
