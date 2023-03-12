@@ -1,5 +1,4 @@
 import React, { useState,useContext} from "react";
-import { act } from "react-dom/test-utils";
 const CartContext = React.createContext([]);
 
 //hook propio para usar nuestro context
