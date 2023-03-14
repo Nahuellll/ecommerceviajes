@@ -16,7 +16,7 @@ const ItemDetail = ({data}) =>{
 
 
     return(
-        <div className="container">
+        <div className="containerDetail">
             <div className="detail">
                 <img className="image" src={data.image} alt="" />
                 <div className="content">
@@ -24,7 +24,7 @@ const ItemDetail = ({data}) =>{
                     <p>{data.description}</p>
                     {
                         goCart
-                        ? <Link to='/cart'>Terminar orden</Link>
+                        ? <Link to='/cart'><button>Terminar orden</button></Link>
                         : <ItemCount initial={1} stock={8} onAdd={onAdd} />
                     }
                 </div>

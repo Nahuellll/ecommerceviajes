@@ -1,6 +1,8 @@
-.container{
+.containerDetail{
     width: 90%;
     margin: auto;
+    background-color: rgb(199, 174, 174);
+    border-radius: 5px;
 }
 
 @media screen and (min-width:768px){
@@ -23,6 +25,8 @@
 
 .content{
     width: 100%;
+    font-size: large;
+    color:black;
 }
 
 @media screen and (min-width:768px){

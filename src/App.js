@@ -8,6 +8,7 @@ import CartProvider from './context/CartContext';
 import Checkout from './components/checkout/Checkout';
 
 
+
 function App() {
   return (
   <>
@@ -15,7 +16,7 @@ function App() {
       <CartProvider>
         <NavBar/>
           <Routes>
-            <Route path='/' element={<ItemListContainer texto = 'estebanqto'/>}/>
+            <Route path='/' element={<ItemListContainer texto='Nuestros viajes'/>}/>
             <Route path='/category/:categoryId' element={<ItemListContainer texto = 'estebanqto'/>}/>
             <Route path='/cart' element={<Cart/>}/>
             <Route path='/detail/:detailId' element={<ItemdetailContainer/>}/>

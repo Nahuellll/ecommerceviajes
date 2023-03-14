@@ -1,9 +1,10 @@
-.viajes{
+.viaje{
     display: block;
-    width: 300px
+    width: 300px;
+    justify-content: center;
 }
 
-.viajes img {
+.viaje img {
     width: 100%;
     height: 100%;
     object-fit: cover;

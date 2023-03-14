@@ -9,7 +9,7 @@ const Checkout = () => {
     const [guardarDatos,setGuardarDatos] = useState({});
     const {cart,totalPrice,clearCart }= useCartContext();
 
-    const onSubmit = (data) => {        
+    const onSubmit = (data) => {
         setGuardarDatos(data);
 
             const order = {
@@ -17,12 +17,12 @@ const Checkout = () => {
                 items:cart.map(product =>({id:product.id, title:product.title, price:product.price, quantity:product.quantity})),
                 total:totalPrice(),
             }
+            console.log(guardarDatos);
 
         const db = getFirestore();
         const ordersCollection = collection(db,'orders');
         addDoc(ordersCollection,order)
-        .then(({id}) => alert(`su pedido fue realizado este es su codigo de pedido:${id}`))
-
+        .then(({id}) => alert(` hola ${data.nombre} ${data.apellido} su pedido fue realizado este es su codigo de pedido:${id},`))
 
         clearCart();
     }
@@ -33,21 +33,21 @@ const Checkout = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div>
                     <label>Nombre</label>
-                    <input type="text" {...register('nombre',{
+                    <input type="text"name="nombre" {...register('nombre',{
                         required:true,
                     })}/>
                     {errors.nombre?.type === 'required' && <p>Debes introducir un nombre</p>}
                 </div>
                 <div>
                     <label>Apellido</label>
-                    <input type="text" {...register('apellido',{
+                    <input type="text"name="apellido" {...register('apellido',{
                         required:true,
                     })}/>
                     {errors.apellido?.type === 'required' && <p>Debes introducir un apellido</p>}
                 </div>
                 <div>
                     <label>Telefono</label>
-                    <input type="phone" {...register('telefono',{
+                    <input type="phone"  name="telefono" {...register('telefono',{
                         required:true,
                         maxLength:14,
                         minLength:14,
@@ -58,7 +58,7 @@ const Checkout = () => {
                 </div>
                 <div>
                     <label>email</label>
-                    <input type="email" {...register('email',{
+                    <input type="email"  name="email"{...register('email',{
                         required:true,
                         pattern: /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/,
                     })}/>
