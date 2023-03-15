@@ -20,10 +20,10 @@ const ItemListContainer = (props) => {
         if(categoryId){
             const queryFilter = query(queryCollection, where('category','==',categoryId))
             getDocs(queryFilter)
-            .then(res => setData(res.docs.map(product =>({id: product.id, ... product.data()}) )));
+            .then(res => setData(res.docs.map(product =>({id: product.id, ...product.data()}) )));
         }else{
             getDocs(queryCollection)
-            .then(res => setData(res.docs.map(product =>({id: product.id, ... product.data()}) )));
+            .then(res => setData(res.docs.map(product =>({id: product.id, ...product.data()}) )));
         }
     },[categoryId])
 
