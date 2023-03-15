@@ -1,7 +1,12 @@
-*{
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    color: black;
+/* import de letras */
+ @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  color: black;
+  background-image: url('../src/assets/fondo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 

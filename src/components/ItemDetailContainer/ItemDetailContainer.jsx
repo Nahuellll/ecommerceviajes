@@ -3,7 +3,7 @@ import { getFirestore,doc,getDoc}  from 'firebase/firestore'
 import ItemDetail from "../ItemDetail/ItemDetail";
 import {useParams} from 'react-router-dom'
 
-
+//acceso a nuestra db en firestore para retornar nuestros productos
 const ItemDetailContainer = () =>{
     const [data,setData] = useState({});
     const {detailId} = useParams();

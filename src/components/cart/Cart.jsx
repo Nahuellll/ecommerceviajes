@@ -1,3 +1,4 @@
+import '../cart/Cart.css';
 import React from "react";
 import { useCartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
@@ -13,8 +14,10 @@ const Cart = () => {
     if(cart.length === 0){
         return (
             <>
-                <p>Aun no hay viajes en el carrito</p>
-                <Link to='/'>Comprar viajes</Link>
+                <p className='text'>Aun no hay viajes en el carrito</p>
+                <Link to='/'>
+                    <button className='btn'> Comprar viajes</button>
+                    </Link>
             </>
         )
     }
@@ -23,12 +26,14 @@ const Cart = () => {
 //si hay productos en cart lo mapeamos para crear un itemcart por cada producto
     return(
         <>
-            {cart.map(product => <ItemCart key={product.id} product={product} />)}
-            <p>
+            <div>
+                {cart.map(product => <ItemCart key={product.id} product={product} />)}
+            </div>
+            <p className='text'>
                 Total : $ {totalPrice()}
             </p>
             <Link to='/checkout'>
-                <button>Siguiente</button>
+                <button className='btn'>Siguiente</button>
             </Link>
         </>
 

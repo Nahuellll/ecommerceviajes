@@ -1,6 +1,7 @@
 import React , {useEffect, useState} from "react";
 import '../itemCount/ItemCount.css'
 
+//contador con las funciones para aumentar y decrementar
 
 const ItemCount = ({initial,stock,onAdd}) => {
 
@@ -22,6 +23,7 @@ const increase = () => {
 
     return(
         <div className="counter">
+            <h2>Selecciona cuantas personas:</h2>
             <button onClick={decrease} disabled={count<=1}>-</button>
             <span>{count}</span>
             <button onClick={increase} disabled={count>=stock}>+</button>

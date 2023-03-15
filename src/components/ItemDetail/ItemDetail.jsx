@@ -5,6 +5,8 @@ import { useCartContext } from '../../context/CartContext';
 import ItemCount from "../itemCount/ItemCount";
 import { Link } from "react-router-dom";
 
+
+
 const ItemDetail = ({data}) =>{
     const [goCart,setGoCart] = useState(false)
     const {addProduct} = useCartContext();
@@ -24,7 +26,7 @@ const ItemDetail = ({data}) =>{
                     <p>{data.description}</p>
                     {
                         goCart
-                        ? <Link to='/cart'><button>Terminar orden</button></Link>
+                        ? <Link to='/cart'><button className='btn' >Terminar orden</button></Link>
                         : <ItemCount initial={1} stock={8} onAdd={onAdd} />
                     }
                 </div>
